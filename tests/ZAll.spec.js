@@ -83,6 +83,7 @@ test.skip("Drop-Down selection",async({page})=>{
 })
 
 test.skip("Drop-down Options check",async({page})=>{
+    
     const options = await page.locator('#country' , 'option').textContent();
 
     await expect(options).toContain("India")
@@ -100,7 +101,8 @@ test.skip("In Multi Selection(Multiple Section) Drop-down",async({page})=>{
     await expect(page.locator('#colors')).toHaveValues(['red','blue','green']);
 })
 
-test("In Multi Selection(ALL) Drop-down",async({page})=>{
+// only used for just execute this test only other will skip by default 
+test.skip("In Multi Selection(ALL) Drop-down",async({page})=>{
     const clr = await page.locator("#colors");
     const cnt = clr.count();
 
@@ -113,3 +115,26 @@ test("In Multi Selection(ALL) Drop-down",async({page})=>{
     }
 })
 
+// test("Date picker 1",async({page})=>{
+//     await page.click("#datepicker");
+//     await page.click("text='14'"); // same month & year
+//     await expect(page.locator("#datepicker")).toHaveValue("04/14/2026")
+// })
+
+test.skip("Upload single file",async({page})=>{
+    await page.locator("#singleFileInput").setInputFiles("tests/files/resume1.pdf");
+    await page.click("//*[@id='singleFileForm']//button");
+    await expect(page.locator("#singleFileStatus")).toContainText("resume1.pdf");
+})
+
+test.skip("Upload Multiple files",async({page})=>{
+    await page.locator("#multipleFilesInput").setInputFiles(["tests/files/resume1.pdf","tests/files/testing.pdf"]);
+    // await page.click("//*[@id='multipleFilesForm']//button");
+    await page.click("#multipleFilesForm button");
+    await expect(page.locator("#multipleFilesStatus")).toContainText("resume1.pdf")
+    await expect(page.locator("#multipleFilesStatus")).toContainText("testing.pdf")
+})
+
+test("Static Web Table",async({})=>{
+
+})
