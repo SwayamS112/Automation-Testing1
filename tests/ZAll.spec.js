@@ -135,6 +135,38 @@ test.skip("Upload Multiple files",async({page})=>{
     await expect(page.locator("#multipleFilesStatus")).toContainText("testing.pdf")
 })
 
-test("Static Web Table",async({})=>{
+test.skip("Static Table Row & col",async({page})=>{
+    const row = await page.locator(`//*[@class="widget-content"]//*[@name='BookTable']//tbody//tr`)
+    const col = await page.locator( `//*[@class="widget-content"]//*[@name='BookTable']//tbody//tr//th`)
+    await expect(row).toHaveCount(7);
+    await expect(col).toHaveCount(4);
+})
 
+test.skip("Validate Static Table header names",async({page})=>{
+    const header = await page.locator(`//*[@class="widget-content"]//*[@name='BookTable']//tbody//tr//th`)
+    await expect(header).toContainText(['BookName','Author','Subject','Price']);
+})
+
+test.skip("validate static table specific data",async({page})=>{{
+    const data = await page.locator(`//*[@class="widget-content"]//*[@name='BookTable']//tbody//tr[2]//td[3]`);
+    await expect(data).toHaveText("Selenium");
+}})
+
+test.skip("Validate Static table find author with name and check its book name",async({page})=>{
+    // const table = page.locator(`//*[@class="widget-content"]//*[@name='BookTable']//tbody//tr`);
+    const table = page.locator("table[name='BookTable'] tbody tr")
+    const author = table.filter({hasText:'Amod'}); // return whole row which contain amod
+    await expect(author).toContainText("Master In Java")
+})
+
+test.skip("Validating the Sum of all prices in Static table",async({page})=>{
+    const price = await page.locator("//*[@name='BookTable']//tbody/tr//td[4]");
+    const count = await price.count();
+    let total = 0;
+    for(let i=0;i<count;i++){
+     let text= await (price.nth(i).textContent());
+     total += Number(text);
+    }
+    console.log(total);
+    await expect(total).toBe(7100)
 })
