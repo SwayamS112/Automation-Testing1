@@ -9,7 +9,13 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^3.7.1"
+  },
+  "dependencies": {
+    "csv-parse": "^6.2.1",
+    "fs": "^0.0.1-security",
+    "xlsx": "^0.18.5"
   }
 }

@@ -4,7 +4,7 @@ test.skip('upload single',async({page})=>{
     await page.goto("https://davidwalsh.name/demo/multiple-file-upload.php");
 
     const upload = await page.locator('#filesToUpload');
-    await upload.setInputFiles("tests/files/resume1.pdf");
+    await upload.setInputFiles("tests/files/resume1");
     await page.waitForTimeout(5000);
 
     await expect(page.locator("#fileList")).toHaveText("resume1.pdf");

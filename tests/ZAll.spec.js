@@ -4,7 +4,7 @@ test.beforeEach("TEST Automation Practice",async({page})=>{
     await page.goto("https://testautomationpractice.blogspot.com/");  
 })
 
-test.skip("input fields",async({page})=>{
+test("input fields",async({page})=>{
     await expect(page).toHaveTitle("Automation Testing Practice");
     
     await page.locator("#name").fill("Swayam");
@@ -16,21 +16,21 @@ test.skip("input fields",async({page})=>{
     await page.locator("#textarea").fill("1026/1 Kishangarh, Chandigarh 160101");
 })
 
-test.skip("Radio Button with male",async({page})=>{
+test("Radio Button with male",async({page})=>{
     await page.locator("#male").check();
     await expect(page.locator("#male")).toBeChecked();
 
     await expect(page.locator("#female")).not.toBeChecked();
 })
 
-test.skip("Radio Button with female",async({page})=>{
+test("Radio Button with female",async({page})=>{
     await page.locator("#female").check();
     await expect(page.locator("#female")).toBeChecked();
 
     await expect(page.locator("#male")).not.toBeChecked();
 })
 
-test.skip("Single CheckBox",async({page})=>{
+test("Single CheckBox",async({page})=>{
     await page.check("#sunday");
     await expect(page.locator("#sunday")).toBeChecked();
 

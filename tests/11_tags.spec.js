@@ -1,22 +1,22 @@
 const {test,expect} = require("@playwright/test");
 
-test.skip("test1@regression",async()=>{
+test("test1@regression",async()=>{
 console.log("this is test 1 regression");
 })
 
-test.skip("test2@regression",async()=>{
+test("test2@regression",async()=>{
 console.log("this is test 2 regression");
 })
 
-test.skip("test3@sanity",async()=>{
+test("test3@sanity",async()=>{
 console.log("this is test 3 sanity");
 })
 
-test.skip("test4@sanity",async()=>{
+test("test4@sanity",async()=>{
 console.log("this is test 4 sanity");
 })
 
-test.skip("test5@sanity@regression",async()=>{
+test("test5@sanity@regression",async()=>{
     console.log("This is test 5 sanity regression");
 })
 
